@@ -1,2 +1,2 @@
 # APCS
-A portfolio of all of my projects during my AP computer science course.
+A portfolio of all of my projects during my AP Computer Science course.
