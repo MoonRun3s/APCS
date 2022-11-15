@@ -1,4 +1,4 @@
-// group: jad richani, layla agamy, vincent shi, alan achilles
+// group: j** rich***, layla *****, vincent ***, alan ********
 
 import java.util.Scanner;
 
