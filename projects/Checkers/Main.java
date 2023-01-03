@@ -8,6 +8,19 @@ class Main {
   static CheckerPiece memory = null;
   static boolean lastTurnWasJump = false;
 
+  public static void printBoard() {
+    System.out.print("\033[H\033[2J");
+    System.out.println("C H E C K E R S\n===============================================\nY^\n");
+    for (int row = 0; row < checkerBoardMatrix.length; row++) {
+      System.out.print(row + 1 + "^|\t  ");
+      for (int column = 0; column < checkerBoardMatrix[row].length; column++) {
+        if (checkerBoardMatrix[row][column]!= null) {System.out.print(checkerBoardMatrix[row][column] + " ");} else {System.out.print(" ·  ");}
+        if (column == 7) {System.out.println("\n");}
+      }
+    }
+    System.out.println("    X [1 - 2- -3 - 4- -5 - 6- -7 - 8]\n");
+  }
+
   public static String move(int selRow, int selCol, int tarRow, int tarCol, CheckerPiece selectedPiece, boolean turn) {
     checkerBoardMatrix[tarRow][tarCol] = checkerBoardMatrix[selRow][selCol];
     checkerBoardMatrix[selRow][selCol] = null;
@@ -32,9 +45,9 @@ class Main {
     } else if (Math.abs(tarRow - selRow) == 2 && Math.abs(tarCol - selCol) == 2) {
         if (checkerBoardMatrix[tarRow][tarCol] == null) {
           int rowOffset, colOffset;
+          if (tarRow > selRow) {rowOffset = 1;} else {rowOffset = -1;}
+          if (tarCol > selCol) {colOffset = 1;} else {colOffset = -1;}
           if (isKing) {
-            if (tarRow > selRow) {rowOffset = 1;} else {rowOffset = -1;}
-            if (tarCol > selCol) {colOffset = 1;} else {colOffset = -1;}
             if (checkerBoardMatrix[selRow + rowOffset][selCol + colOffset] != null) {
               CheckerPiece pieceToDie = checkerBoardMatrix[selRow + rowOffset][selCol + colOffset];
               if (pieceToDie.getTeam() != team) {
@@ -44,8 +57,6 @@ class Main {
               }
             }
           } else if ((team == "B" && tarRow > selRow) || (team == "W" && tarRow < selRow)) {
-            if (tarRow > selRow) {rowOffset = 1;} else {rowOffset = -1;}
-            if (tarCol > selCol) {colOffset = 1;} else {colOffset = -1;}
             if (checkerBoardMatrix[selRow + rowOffset][selCol + colOffset] != null) {
               CheckerPiece pieceToDie = checkerBoardMatrix[selRow + rowOffset][selCol + colOffset];
               if (pieceToDie.getTeam() != team) {
@@ -77,19 +88,6 @@ class Main {
     printBoard();
     if (override) {memory = null;}
     return "Invalid action.";
-  }
-  
-  public static void printBoard() {
-    System.out.print("\033[H\033[2J");
-    System.out.println("C H E C K E R S\n===============================================\nY^\n");
-    for (int row = 0; row < checkerBoardMatrix.length; row++) {
-      System.out.print(row + 1 + "^|\t  ");
-      for (int column = 0; column < checkerBoardMatrix[row].length; column++) {
-        if (checkerBoardMatrix[row][column]!= null) {System.out.print(checkerBoardMatrix[row][column] + " ");} else {System.out.print(" ·  ");}
-        if (column == 7) {System.out.println("\n");}
-      }
-    }
-    System.out.println("    X [1 - 2- -3 - 4- -5 - 6- -7 - 8]\n");
   }
 
   public static String masterGame() {
