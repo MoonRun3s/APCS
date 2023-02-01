@@ -9,4 +9,4 @@ Checkers is a strategy game in which players must capture the entirety of their 
 * All rules of Checkers should be accounted for
 * Pieces should be easily distinguishable and playable
 
-> Grade Received: Awaiting...
+> Grade Received: 25/25
