@@ -10,4 +10,4 @@ Minesweeper is a strategy game in which the player must "dig" an array of boxes 
 * An accurate opening sequence must be performed on empty spots
 * 40 mines must be randomly placed throughout a 16x16 grid
 
-> Grade Received: Awaiting...
+> Grade Received: 25/25
